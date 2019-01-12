@@ -1,0 +1,27 @@
+int senVal = 0; //initially sensor value is set to 0
+
+void setup() //Declaring the pins
+{
+  pinMode(13, OUTPUT);
+  pinMode(A0, INPUT);
+}
+void loop()
+{
+  senVal = analogRead(A0); //To Read a sensor value from the pin A0
+  if (senVal <= 150) // LED is HIGH for 0 - 150 of Potentiometer
+  { digitalWrite(13, HIGH);
+    delay(10);
+  }
+  else if (senVal <= 250) // LED is HIGH for 150 - 250 of Potentiometer
+  {
+    digitalWrite(13, LOW);
+    delay(10);
+  }
+  else // To blink the LED
+  {
+    digitalWrite(13, HIGH); // LED is HIGH for values greater than 250 of Potentiometer
+    delay(1000- senVal);
+    digitalWrite(13, LOW); // LED Blinks
+    delay(1000- senVal);
+    }
+  }
